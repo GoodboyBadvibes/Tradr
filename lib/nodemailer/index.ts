@@ -29,6 +29,11 @@ const OAuth2Client = new google.auth.OAuth2(
     "https://developers.google.com/oauthplayground"
 );
 
+// Ensure the OAuth2 client has the refresh token so it can obtain access tokens
+// when calling `getAccessToken()`. Without this you'll see:
+// "No refresh token or refresh handler callback is set."
+OAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+
 
 
 // export const transporter = nodemailer.createTransport({
