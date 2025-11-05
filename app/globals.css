@@ -79,7 +79,7 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
+  --background: #0A1747;
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
@@ -115,7 +115,7 @@
 /* === CUSTOM COLOR THEME === */
 @theme {
   /* Extended Gray Scale */
-  --color-gray-900: #050505;
+  --color-gray-900: #0A1747;
   --color-gray-800: #141414;
   --color-gray-700: #212328;
   --color-gray-600: #30333A;
@@ -137,7 +137,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-gray-900 text-foreground;
+    @apply bg-[#080B14] text-foreground;
   }
 }
 
