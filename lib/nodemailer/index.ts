@@ -68,7 +68,7 @@ export const sendWelcomeEmail = async ({ email, name, intro }: WelcomeEmailData)
         .replace('{{intro}}', intro);
 
     const mailOptions = {
-        from: `"Tradr" <eekwebene@gmail.com>`,
+        from: `"Tradr" <${process.env.NODEMAILER_EMAIL}>`,
         to: email,
         subject: `Welcome to Tradr - your stock market toolkit is ready!`,
         text: 'Thanks for joining Tradr',
@@ -99,11 +99,11 @@ export const sendNewsSummaryEmail = async (
         .replace('{{newsContent}}', newsContent);
 
     const mailOptions = {
-        from: `"Tradr News" <eekwebene@gmail.com>`,
+        from: `"Tradr News" <${process.env.NODEMAILER_EMAIL}>`,
         to: email,
         subject: `📈 Market News Summary Today - ${date}`,
         text: `Today's market news summary from Tradr`,
-        html: htmlTemplate,
+        html: htmlTemplate, 
     };
 
     await transporter.sendMail(mailOptions);
