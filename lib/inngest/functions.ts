@@ -6,6 +6,21 @@ import { getWatchlistSymbolsByEmail } from "@/lib/actions/watchlist.actions";
 import { getNews } from "@/lib/actions/finnhub.actions";
 import { getFormattedTodayDate } from "@/lib/utils";
 
+interface UserForNewsEmail {
+    email: string;
+    name?: string;
+    // add other user fields used elsewhere if needed
+}
+
+interface MarketNewsArticle {
+    headline?: string;
+    summary?: string;
+    url?: string;
+    source?: string;
+    datetime?: number;
+    // include additional fields returned by getNews if necessary
+}
+
 export const sendSignUpEmail = inngest.createFunction(
     { id: 'signalist-sign-up-email' },
     { event: 'app/user.created'},
