@@ -2,13 +2,13 @@ import nodemailer from 'nodemailer';
 import {google} from 'googleapis';
 import {WELCOME_EMAIL_TEMPLATE, NEWS_SUMMARY_EMAIL_TEMPLATE} from "@/lib/nodemailer/templates";
 
-// export const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: process.env.NODEMAILER_EMAIL!,
-//         pass: process.env.NODEMAILER_PASSWORD!,
-//     }
-// })
+export const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.NODEMAILER_EMAIL!,
+        pass: process.env.NODEMAILER_PASSWORD!,
+    }
+})
 // export const transporter = nodemailer.createTransport({
 //     host: 'smtp.gmail.com',
 //     port: 465,
@@ -50,17 +50,18 @@ OAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
 export const sendWelcomeEmail = async ({ email, name, intro }: WelcomeEmailData) => {
 
-    const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        type: 'OAuth2',
-        user: process.env.NODEMAILER_EMAIL!,
-        clientId: process.env.CLIENT_ID!,
-        clientSecret: process.env.CLIENT_SECRET!,
-        refreshToken: process.env.REFRESH_TOKEN!,
-        accessToken: await OAuth2Client.getAccessToken().then(res => res.token as string)
-    }
-});
+//     const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         type: 'OAuth2',
+//         user: process.env.NODEMAILER_EMAIL!,
+//         // pass: process.env.NODEMAILER_PASSWORD!,
+//         clientId: process.env.CLIENT_ID!,
+//         clientSecret: process.env.CLIENT_SECRET!,
+//         refreshToken: process.env.REFRESH_TOKEN!,
+//         accessToken: await OAuth2Client.getAccessToken().then(res => res.token as string)
+//     }
+// });
 
     
     const htmlTemplate = WELCOME_EMAIL_TEMPLATE
